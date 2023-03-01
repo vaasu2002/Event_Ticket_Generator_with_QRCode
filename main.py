@@ -12,6 +12,7 @@ from random import randint
 
 ticket_order_number = []
 
+
 def random_ticket_sequence():
     range_start = 10 ** (9 - 1)
     range_end = (10 ** 9) - 1
@@ -84,7 +85,7 @@ class PDF(FPDF):
 
     def qr_code(self):
         # QR_CODE
-        self.image(name = f"{PER_NAME}_ticket.png", x = 170, y = 85, w=25, h=25)
+        self.image(name=f"{PER_NAME}_ticket.png", x=170, y=85, w=25, h=25)
 
     # Page footer
     def footer(self):
