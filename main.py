@@ -60,26 +60,26 @@ class PDF(FPDF):
     def attendee_name(self, PER_NAME):
         self.set_y(70)
         self.set_font("Arial", 'B', 25)
-        # ATTENDEE_NAME
+        # ATTENDEE NAME
         self.cell(60, 50, PER_NAME, 0, 0, 'L')
         # self.cell(65, 58, ROLE, 0, 0, 'C')
 
     def role_in_event(self, ROLE):
         self.set_y(76)
         self.set_font("Arial", 'I', 10)
-        # ROLE_IN_EVENT
+        # Role in Event
         self.cell(60, 52, f"ROLE: {ROLE}", 0, 0, 'L')
 
     def payment_status(self, PAYMENT):
         self.set_y(-37)
         self.set_font("Arial", '', 10)
-        # ROLE_IN_EVENT
+        # Payment Status
         self.cell(0, 10, PAYMENT_STATUS, 0, 0, 'L')
 
     def order_number(self, order_no):
         self.set_x(-50)
         self.set_font("Arial", '', 10)
-        # ROLE_IN_EVENT
+        # Order Number
         self.cell(0, 10, f"Order Number: {ORDER_NO}", 0, 0, 'L')
 
     def qr_code(self):
