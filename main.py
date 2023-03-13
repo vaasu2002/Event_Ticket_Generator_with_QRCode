@@ -118,7 +118,7 @@ for ticket in tickets:
     pdf.output(f"{PER_NAME}_ticket.pdf", 'F')
 
     # Login credentials
-    gmail_user = 'ENTER_YOUR_MAIL'
+    gmail_user = 'ENTER_YOUR_GMAIL'
     gmail_password = 'ENTER_YOUR_PASSWORD'
 
     # Create a message container
