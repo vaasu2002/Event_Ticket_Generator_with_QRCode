@@ -7,6 +7,9 @@ import png
 import os
 import smtplib
 
+from QRBooking.database import connectToDatabase
+collection = connectToDatabase()
+
 class PDF(FPDF):
     def __init__(self,event_img_filepath:str):
         super().__init__(format='A5',orientation='L')
@@ -84,7 +87,7 @@ for index in range(0,len(confirm_payment_df)):
         email = confirm_payment_df['email'].iloc[index]
         full_name = confirm_payment_df['full_name'].iloc[index].upper()
         gender = confirm_payment_df['gender'].iloc[index].upper()
-        role = "ATTENDEE",
+        role = "ATTENDEE"
         payment_status = "PAID"
 
         document = {
@@ -98,7 +101,7 @@ for index in range(0,len(confirm_payment_df)):
             "payment_status":payment_status
         }
 
-        # result = collection.insert_one(document)
+        result = collection.insert_one(document)
 
     except:
         print(f"{full_name}-{registration_number} already in database")

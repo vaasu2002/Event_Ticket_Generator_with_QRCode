@@ -1,6 +1,7 @@
 openpyxl
 pyqrcode
-png
-smtplib
+pymongo
+fpdf
 pandas
 qrcode
+-e .
