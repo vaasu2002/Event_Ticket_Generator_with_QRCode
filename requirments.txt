@@ -1,0 +1,7 @@
+openpyxl
+pyqrcode
+pymongo
+fpdf
+pandas
+qrcode
+-e .

@@ -1,0 +1,2 @@
+from QRBooking.generateQR import start_entry_process
+start_entry_process()
