@@ -6,7 +6,6 @@ import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
 from email.mime.application import MIMEApplication
 
 df = pd.read_excel('payment_links_excel.xlsx')
@@ -119,7 +118,7 @@ for ticket in tickets:
     pdf.output(f"{PER_NAME}_ticket.pdf", 'F')
 
     # Login credentials
-    gmail_user = 'event.vitb@gmail.com'
+    gmail_user = 'ENTER_YOUR_MAIL'
     gmail_password = 'ENTER_YOUR_PASSWORD'
 
     # Create a message container
