@@ -1,0 +1,6 @@
+openpyxl
+pyqrcode
+png
+smtplib
+pandas
+qrcode
