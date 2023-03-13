@@ -1,11 +1,6 @@
-import pandas as pd
-import qrcode
-import pandas as pd
 from fpdf import FPDF
 import pyqrcode
 import png
-import os
-import smtplib
 
 class PDF(FPDF):
     def __init__(self,event_img_filepath:str):

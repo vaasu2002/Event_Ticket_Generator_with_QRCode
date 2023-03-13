@@ -120,7 +120,7 @@ for ticket in tickets:
 
         # Login credentials
         gmail_user = 'event.vitb@gmail.com'
-        gmail_password = 'jydbwqtbfvwwrdpv'
+        gmail_password = 'ENTER_PASSWORD_HERE'
 
         # Create a message container
         msg = MIMEMultipart()
