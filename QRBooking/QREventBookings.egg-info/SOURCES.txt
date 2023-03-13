@@ -4,5 +4,5 @@ QRBooking/QREventBookings.egg-info/PKG-INFO
 QRBooking/QREventBookings.egg-info/SOURCES.txt
 QRBooking/QREventBookings.egg-info/dependency_links.txt
 QRBooking/QREventBookings.egg-info/top_level.txt
-QRBooking/generateOR/__init__.py
-QRBooking/generateOR/pdf.py
+QRBooking/generateQR/__init__.py
+QRBooking/generateQR/pdf.py
