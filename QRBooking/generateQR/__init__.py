@@ -86,17 +86,22 @@ def start_entry_process():
             "email": email,
             "gender": gender,
             "role": role,
-            "payment_status":payment_status
+            "payment_status":payment_status,
+            "isInside": False
         }
-        result = collection.insert_one(document)
-        qrcode_dir = make_qr(full_name,registration_number,unique_id,event_name)
-        pdf_dir = generate_pdf(event_name,full_name,role,payment_status,
-                    unique_id,qrcode_dir,registration_number)
+        try:
+            result = collection.insert_one(document)
+        
             
-        send_ticket(email,full_name,registration_number,event_name,pdf_dir)
 
-        # except:
-        #     print(f"{registration_number}-{full_name} Already in database")
+            qrcode_dir = make_qr(full_name,registration_number,unique_id,event_name)
+            pdf_dir = generate_pdf(event_name,full_name,role,payment_status,
+                        unique_id,qrcode_dir,registration_number)
+                
+            send_ticket(email,full_name,registration_number,event_name,pdf_dir)
+
+        except:
+            print(f"{registration_number}-{full_name} Already in database")
 
         
 
