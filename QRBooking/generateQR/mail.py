@@ -3,8 +3,8 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 import smtplib
 import os
-gmail_user = '#Event.vitb@gmail.com'
-gmail_password = '#jydbwqtbfvwwrdpv'
+gmail_user = 'Event.vitb@gmail.com'
+gmail_password = 'jydbwqtbfvwwrdpv'
 
 def send_ticket(email,full_name,registration_number,event_name,pdf_dir):
     try:
