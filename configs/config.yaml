@@ -1,0 +1,8 @@
+artifact_dir: artifact
+event_dir: Event
+payment_sheet_dir: payment_data
+
+event_details:
+  event_name: PUBJABI CLUB EVENT
+  event_location: Parking location
+  event_date_time: 28 February 2023, 4PM to 7PM

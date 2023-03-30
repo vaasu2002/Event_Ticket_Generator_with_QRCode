@@ -2,6 +2,7 @@ openpyxl
 pyqrcode
 pymongo
 fpdf
+python-box==6.0.2
 pandas
 qrcode
 -e .

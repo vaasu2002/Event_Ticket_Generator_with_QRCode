@@ -1,5 +1,4 @@
 import os
-# from util.internetWorking import connect
 import pymongo
 from pymongo.errors import ConnectionFailure
 

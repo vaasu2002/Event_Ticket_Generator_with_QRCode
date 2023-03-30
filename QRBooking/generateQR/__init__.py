@@ -1,9 +1,12 @@
 import pandas as pd
 import qrcode
-import pandas as pd
+from QRBooking.constant import CONFIG_FILE_PATH
+from QRBooking.common import read_yaml
 from QRBooking.generateQR.mail import send_ticket
+import os
 
-FILEPATH = "artifact\payment_data\payment_links_excel.xlsx"
+configs = read_yaml(CONFIG_FILE_PATH)
+payment_sheet_filepath = os.path.join(configs['artifact_dir'],configs['payment_sheet_dir'],'PUBJABI CLUB EVENT.xlsx')
 
 from QRBooking.database import connectToDatabase
 from QRBooking.generateQR.pdf import PDF
@@ -22,7 +25,9 @@ def make_qr(full_name:str,registration_number:str,unique_id:str,event_name:str):
 
         # Saving QR in respective directory
         img = qr.make_image(fill_color="black", back_color="white")
-        qrcode_dir = f"artifact/Event/{event_name}/QRCode/{registration_number}.png"
+
+        qrcode_dir = os.path.join(configs['artifact_dir'],"Event",configs['event_details']['event_name'],'QRCode',f"{registration_number}.png")
+
         img.save(qrcode_dir)
 
         print(f"{registration_number}-{full_name} QR Code saved here:- {qrcode_dir}")
@@ -34,11 +39,12 @@ def make_qr(full_name:str,registration_number:str,unique_id:str,event_name:str):
 
 
 def generate_pdf(event_name:str,full_name:str,role:str,payment_status:str,
-                    unique_id:str,qrcode_dir:str,registration_number:str,date_time_event='28 February 2023, 4PM to 7PM',venue_event='location_hehe'):
+                    unique_id:str,qrcode_dir:str,registration_number:str,date_time_event=configs['event_details']['event_date_time'],venue_event=configs['event_details']['event_location']):
     
     try:
 
-        pdf = PDF(event_img_filepath=f"artifact/Event/{event_name}/logo/logo.png")
+        event_img_filepath = os.path.join(configs['artifact_dir'],"Event",event_name,'logo','logo.png')
+        pdf = PDF(event_img_filepath = event_img_filepath)
         pdf.alias_nb_pages()
         pdf.add_page()
         pdf.set_font('Times', '', 12)
@@ -63,7 +69,7 @@ def generate_pdf(event_name:str,full_name:str,role:str,payment_status:str,
 
 
 def start_entry_process():
-    df = pd.read_excel(FILEPATH)
+    df = pd.read_excel(payment_sheet_filepath)
     confirm_payment_df = df[df['payment status']=='captured']
     failed_payment_df = df[df['payment status']=='failed']
 
@@ -87,7 +93,8 @@ def start_entry_process():
             "gender": gender,
             "role": role,
             "payment_status":payment_status,
-            "isInside": False
+            "mailSent": False,
+            "isInside": False,
         }
         try:
             result = collection.insert_one(document)
@@ -127,4 +134,9 @@ def start_entry_process():
 # new_feature = { "$set": { "age": 30 } }
 
 # # update the document with the new feature
+# collection.update_one(query, new_feature)
+
+
+# query = { "name": "John" }
+# new_feature = { "$set": { "age": 30 } }
 # collection.update_one(query, new_feature)
